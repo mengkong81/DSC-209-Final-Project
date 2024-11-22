@@ -85,13 +85,13 @@
       .style('top', `${event.pageY + 10}px`);
   }
 })
-.on('mouseout', function () {
-  // Reset the state border style
-  d3.select(this)
-    .transition()
-    .duration(200)
-    .attr('stroke', '#333') // Keep the original border color
-    .attr('stroke-width',); // Reset to original thickness
+.on('mouseout', function (event, d) {
+      // Reset to the original color
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .attr('fill', d => d.properties.median_price !== null ? colorScale(d.properties.median_price) : '#ccc')
+        .attr('stroke-width', 0.5);
 
   // Hide tooltip
   d3.select('#tooltip').style('opacity', 0);
@@ -198,6 +198,24 @@ function addLegend(svg, colorScale) {
   <div id="slider" style="margin: 30px;"></div>
   <svg id="map"></svg>
   <div id="tooltip"></div>
+
+  <!-- Add your description below the visualization -->
+<div style="
+margin-top: 20px; 
+padding: 10px; 
+line-height: 1.5; 
+max-width: 800px; 
+margin-left: auto; 
+margin-right: auto; 
+text-align: justify; 
+font-size: 20px; 
+color: #333; 
+text-indent: 40px;">
+<p>
+<strong>Insightful Visualization:</strong> Explore the evolution of U.S. housing market trends with this interactive visualization. Seamlessly hover over each state to reveal its median home price for the selected year. Navigate through two decades of data using the timeline slider and uncover regional trends. The dynamic color gradient highlights price variations, with deeper hues signifying higher housing values, offering a clear, data-driven perspective on the market.
+</p>
+</div>
+
   
   <style>
 	#map {
