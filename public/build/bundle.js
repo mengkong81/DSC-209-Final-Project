@@ -21029,7 +21029,7 @@ var app = (function () {
     		c: function create() {
     			div0 = element("div");
     			h1 = element("h1");
-    			h1.textContent = "U.S Housing Market Insights: Median Prices by State from 2000 to 2024";
+    			h1.textContent = "U.S Housing Market Insights: Median Prices by State from January 2000 to October 2024";
     			t1 = space();
     			div1 = element("div");
     			t2 = space();
@@ -21038,19 +21038,19 @@ var app = (function () {
     			div2 = element("div");
     			set_style(h1, "font-size", "28px");
     			set_style(h1, "font-weight", "bold");
-    			add_location(h1, file, 158, 1, 4978);
+    			add_location(h1, file, 158, 1, 4980);
     			set_style(div0, "text-align", "center");
     			set_style(div0, "margin-bottom", "20px");
-    			add_location(div0, file, 157, 0, 4922);
+    			add_location(div0, file, 157, 0, 4924);
     			attr_dev(div1, "id", "slider");
     			set_style(div1, "margin", "30px");
-    			add_location(div1, file, 164, 2, 5119);
+    			add_location(div1, file, 164, 2, 5137);
     			attr_dev(svg, "id", "map");
     			attr_dev(svg, "class", "svelte-ed4w7q");
-    			add_location(svg, file, 165, 2, 5167);
+    			add_location(svg, file, 165, 2, 5185);
     			attr_dev(div2, "id", "tooltip");
     			attr_dev(div2, "class", "svelte-ed4w7q");
-    			add_location(div2, file, 166, 2, 5190);
+    			add_location(div2, file, 166, 2, 5208);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21166,10 +21166,10 @@ var app = (function () {
 
     		gradient.selectAll('stop').data([
     			{ offset: '0%', color: '#f7fbff' },
-    			{ offset: '20%', color: '#deebf7' },
-    			{ offset: '40%', color: '#c6dbef' },
-    			{ offset: '60%', color: '#9ecae1' },
-    			{ offset: '80%', color: '#6baed6' },
+    			{ offset: '12%', color: '#deebf7' },
+    			{ offset: '30%', color: '#c6dbef' },
+    			{ offset: '45%', color: '#9ecae1' },
+    			{ offset: '66.6%', color: '#6baed6' },
     			{ offset: '100%', color: '#041e42' }
     		]).enter().append('stop').attr('offset', d => d.offset).attr('stop-color', d => d.color); // Much darker blue for $1,000,000
 

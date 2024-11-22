@@ -130,10 +130,10 @@ function addLegend(svg, colorScale) {
   gradient.selectAll('stop')
     .data([
       { offset: '0%', color: '#f7fbff' },
-      { offset: '20%', color: '#deebf7' },
-      { offset: '40%', color: '#c6dbef' },
-      { offset: '60%', color: '#9ecae1' },
-      { offset: '80%', color: '#6baed6' },
+      { offset: '12%', color: '#deebf7' },
+      { offset: '30%', color: '#c6dbef' },
+      { offset: '45%', color: '#9ecae1' },
+      { offset: '66.6%', color: '#6baed6' },
       { offset: '100%', color: '#041e42' }, // Much darker blue for $1,000,000
     ])
     .enter()
@@ -157,7 +157,7 @@ function addLegend(svg, colorScale) {
 
 <div style="text-align: center; margin-bottom: 20px;">
 	<h1 style="font-size: 28px; font-weight: bold;">
-		U.S Housing Market Insights: Median Prices by State from 2000 to 2024
+		U.S Housing Market Insights: Median Prices by State from January 2000 to October 2024
 	</h1>
 </div>
 
