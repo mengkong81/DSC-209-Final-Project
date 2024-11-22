@@ -21038,19 +21038,19 @@ var app = (function () {
     			div2 = element("div");
     			set_style(h1, "font-size", "28px");
     			set_style(h1, "font-weight", "bold");
-    			add_location(h1, file, 191, 1, 6005);
+    			add_location(h1, file, 191, 1, 5975);
     			set_style(div0, "text-align", "center");
     			set_style(div0, "margin-bottom", "20px");
-    			add_location(div0, file, 190, 0, 5949);
+    			add_location(div0, file, 190, 0, 5919);
     			attr_dev(div1, "id", "slider");
     			set_style(div1, "margin", "30px");
-    			add_location(div1, file, 197, 2, 6162);
+    			add_location(div1, file, 197, 2, 6132);
     			attr_dev(svg, "id", "map");
     			attr_dev(svg, "class", "svelte-ed4w7q");
-    			add_location(svg, file, 198, 2, 6210);
+    			add_location(svg, file, 198, 2, 6180);
     			attr_dev(div2, "id", "tooltip");
     			attr_dev(div2, "class", "svelte-ed4w7q");
-    			add_location(div2, file, 199, 2, 6233);
+    			add_location(div2, file, 199, 2, 6203);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21137,7 +21137,7 @@ var app = (function () {
 
     				const brighterColor = color(currentColor).brighter(0.5);
 
-    				select(this).transition().duration(200).attr('fill', brighterColor).attr('stroke-width', 2); // Brighten the current color
+    				select(this).transition().duration(200).attr('fill', brighterColor).attr('stroke-width', 4); // Brighten the current color
     				// Thicker border
 
     				// Show tooltip
@@ -21146,10 +21146,9 @@ var app = (function () {
     				select('#tooltip').style('opacity', 1).html(`${d.properties.NAME}: $${formattedPrice}`).style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
     			}
     		}).on('mouseout', function () {
-    			// Reset state style to the original color
-    			select(this).transition().duration(200).attr('fill', d => d.properties.median_price !== null
-    			? colorScale(d.properties.median_price)
-    			: '#ccc').attr('stroke-width', 0.5);
+    			// Reset the state border style
+    			select(this).transition().duration(200).attr('stroke', '#333').attr('stroke-width'); // Keep the original border color
+    			// Reset to original thickness
 
     			// Hide tooltip
     			select('#tooltip').style('opacity', 0);

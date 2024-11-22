@@ -74,7 +74,7 @@
       .transition()
       .duration(200)
       .attr('fill', brighterColor) // Brighten the current color
-      .attr('stroke-width', 10); // Thicker border
+      .attr('stroke-width', 4); // Thicker border
 
     // Show tooltip
     const formattedPrice = d.properties.median_price.toLocaleString();
@@ -85,13 +85,13 @@
       .style('top', `${event.pageY + 10}px`);
   }
 })
-.on('mouseover', function (event, d) {
-  if (d.properties.median_price !== null) {
-    d3.select(this)
-      .transition()
-      .duration(200)
-      .attr('stroke', '#333') // Add a darker border
-      .attr('stroke-width', 2); // Thicker border for highlighting
+.on('mouseout', function () {
+  // Reset the state border style
+  d3.select(this)
+    .transition()
+    .duration(200)
+    .attr('stroke', '#333') // Keep the original border color
+    .attr('stroke-width',); // Reset to original thickness
 
   // Hide tooltip
   d3.select('#tooltip').style('opacity', 0);
