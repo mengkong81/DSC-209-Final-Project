@@ -21038,19 +21038,19 @@ var app = (function () {
     			div2 = element("div");
     			set_style(h1, "font-size", "28px");
     			set_style(h1, "font-weight", "bold");
-    			add_location(h1, file, 158, 1, 4980);
+    			add_location(h1, file, 191, 1, 6005);
     			set_style(div0, "text-align", "center");
     			set_style(div0, "margin-bottom", "20px");
-    			add_location(div0, file, 157, 0, 4924);
+    			add_location(div0, file, 190, 0, 5949);
     			attr_dev(div1, "id", "slider");
     			set_style(div1, "margin", "30px");
-    			add_location(div1, file, 164, 2, 5137);
+    			add_location(div1, file, 197, 2, 6162);
     			attr_dev(svg, "id", "map");
     			attr_dev(svg, "class", "svelte-ed4w7q");
-    			add_location(svg, file, 165, 2, 5185);
+    			add_location(svg, file, 198, 2, 6210);
     			attr_dev(div2, "id", "tooltip");
     			attr_dev(div2, "class", "svelte-ed4w7q");
-    			add_location(div2, file, 166, 2, 5208);
+    			add_location(div2, file, 199, 2, 6233);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21102,7 +21102,7 @@ var app = (function () {
     	onMount(async () => {
     		data = await csv('/median_prices.csv');
     		geoJson = await json('/us-states.json');
-    		dateRange = data.columns.slice(5); // Extract the date range
+    		dateRange = data.columns.slice(8); // Extract the date range
     		selectedDate = dateRange[0]; // Default to the first date
     		drawMap();
     		createSlider();
@@ -21113,9 +21113,6 @@ var app = (function () {
     		const projection = albersUsa().scale(1800).translate([width / 2, height / 2]); // Adjusted for expanded map
     		const path = index$2().projection(projection);
 
-    		const colorScale = threshold().domain([0, 100000, 300000, 500000, 750000, 1000000]).range(['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#084c8d']); // Include $1,000,000
-    		// Use a moderately dark blue for $1,000,000
-
     		geoJson.features.forEach(feature => {
     			const stateData = data.find(d => d.RegionName === feature.properties.NAME);
     			feature.properties.median_price = stateData ? Math.round(+stateData[selectedDate]) : null;
@@ -21123,12 +21120,38 @@ var app = (function () {
 
     		svg.selectAll('path').data(geoJson.features).join('path').attr('d', path).attr('fill', d => d.properties.median_price !== null
     		? colorScale(d.properties.median_price)
-    		: '#ccc').attr('stroke', '#333').attr('stroke-width', 0.5).on('mouseover', (event, d) => {
+    		: '#ccc').attr('stroke', '#333').attr('stroke-width', 0.5).on('mouseover', function (event, d) {
+    			// Highlight the state
+    			select(this).transition().duration(200).attr('fill', '#ffcc00').attr('stroke-width', 2); // Change to a highlight color
+    			// Thicker border
+
+    			// Show tooltip
     			if (d.properties.median_price !== null) {
     				const formattedPrice = d.properties.median_price.toLocaleString();
     				select('#tooltip').style('opacity', 1).html(`${d.properties.NAME}: $${formattedPrice}`).style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
     			}
-    		}).on('mouseout', () => {
+    		}).on('mouseover', function (event, d) {
+    			if (d.properties.median_price !== null) {
+    				// Brighten the current color slightly
+    				const currentColor = select(this).attr('fill');
+
+    				const brighterColor = color(currentColor).brighter(0.5);
+
+    				select(this).transition().duration(200).attr('fill', brighterColor).attr('stroke-width', 2); // Brighten the current color
+    				// Thicker border
+
+    				// Show tooltip
+    				const formattedPrice = d.properties.median_price.toLocaleString();
+
+    				select('#tooltip').style('opacity', 1).html(`${d.properties.NAME}: $${formattedPrice}`).style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
+    			}
+    		}).on('mouseout', function () {
+    			// Reset state style to the original color
+    			select(this).transition().duration(200).attr('fill', d => d.properties.median_price !== null
+    			? colorScale(d.properties.median_price)
+    			: '#ccc').attr('stroke-width', 0.5);
+
+    			// Hide tooltip
     			select('#tooltip').style('opacity', 0);
     		});
 

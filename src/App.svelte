@@ -14,62 +14,95 @@
 	onMount(async () => {
 	  data = await d3.csv('/median_prices.csv');
 	  geoJson = await d3.json('/us-states.json');
-	  dateRange = data.columns.slice(5); // Extract the date range
+	  dateRange = data.columns.slice(8); // Extract the date range
 	  selectedDate = dateRange[0]; // Default to the first date
 	  drawMap();
 	  createSlider();
 	});
   
 	function drawMap() {
-	  const svg = d3
-		.select('#map')
-		.attr('width', width)
-		.attr('height', height);
-  
-	  const projection = d3
-		.geoAlbersUsa()
-		.scale(1800) // Adjusted for expanded map
-		.translate([width / 2, height / 2]);
-  
-	  const path = d3.geoPath().projection(projection);
-  
-	  const colorScale = d3.scaleThreshold()
-	  	.domain([0, 100000, 300000, 500000, 750000, 1000000]) // Include $1,000,000
-  		.range(['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#084c8d']); // Use a moderately dark blue for $1,000,000
+  const svg = d3
+    .select('#map')
+    .attr('width', width)
+    .attr('height', height);
+
+  const projection = d3
+    .geoAlbersUsa()
+    .scale(1800) // Adjusted for expanded map
+    .translate([width / 2, height / 2]);
+
+  const path = d3.geoPath().projection(projection);
+
+  geoJson.features.forEach(feature => {
+    const stateData = data.find(d => d.RegionName === feature.properties.NAME);
+    feature.properties.median_price = stateData ? Math.round(+stateData[selectedDate]) : null;
+  });
+
+  svg
+    .selectAll('path')
+    .data(geoJson.features)
+    .join('path')
+    .attr('d', path)
+    .attr('fill', d => d.properties.median_price !== null ? colorScale(d.properties.median_price) : '#ccc')
+    .attr('stroke', '#333')
+    .attr('stroke-width', 0.5)
+    .on('mouseover', function (event, d) {
+      // Highlight the state
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .attr('fill', '#ffcc00') // Change to a highlight color
+        .attr('stroke-width', 2); // Thicker border
+
+      // Show tooltip
+      if (d.properties.median_price !== null) {
+        const formattedPrice = d.properties.median_price.toLocaleString();
+        d3.select('#tooltip')
+          .style('opacity', 1)
+          .html(`${d.properties.NAME}: $${formattedPrice}`)
+          .style('left', `${event.pageX + 10}px`)
+          .style('top', `${event.pageY + 10}px`);
+      }
+    })
+    .on('mouseover', function (event, d) {
+  if (d.properties.median_price !== null) {
+    // Brighten the current color slightly
+    const currentColor = d3.select(this).attr('fill');
+    const brighterColor = d3.color(currentColor).brighter(0.5);
+
+    d3.select(this)
+      .transition()
+      .duration(200)
+      .attr('fill', brighterColor) // Brighten the current color
+      .attr('stroke-width', 10); // Thicker border
+
+    // Show tooltip
+    const formattedPrice = d.properties.median_price.toLocaleString();
+    d3.select('#tooltip')
+      .style('opacity', 1)
+      .html(`${d.properties.NAME}: $${formattedPrice}`)
+      .style('left', `${event.pageX + 10}px`)
+      .style('top', `${event.pageY + 10}px`);
+  }
+})
+.on('mouseover', function (event, d) {
+  if (d.properties.median_price !== null) {
+    d3.select(this)
+      .transition()
+      .duration(200)
+      .attr('stroke', '#333') // Add a darker border
+      .attr('stroke-width', 2); // Thicker border for highlighting
+
+  // Hide tooltip
+  d3.select('#tooltip').style('opacity', 0);
+});
 
 
+  addLegend(svg, colorScale);
+}
+
   
-	  geoJson.features.forEach(feature => {
-		const stateData = data.find(d => d.RegionName === feature.properties.NAME);
-		feature.properties.median_price = stateData ? Math.round(+stateData[selectedDate]) : null;
-	  });
-  
-	  svg
-		.selectAll('path')
-		.data(geoJson.features)
-		.join('path')
-		.attr('d', path)
-		.attr('fill', d => d.properties.median_price !== null ? colorScale(d.properties.median_price) : '#ccc')
-		.attr('stroke', '#333')
-		.attr('stroke-width', 0.5)
-		.on('mouseover', (event, d) => {
-		  if (d.properties.median_price !== null) {
-			const formattedPrice = d.properties.median_price.toLocaleString();
-			d3.select('#tooltip')
-			  .style('opacity', 1)
-			  .html(`${d.properties.NAME}: $${formattedPrice}`)
-			  .style('left', `${event.pageX + 10}px`)
-			  .style('top', `${event.pageY + 10}px`);
-		  }
-		})
-		.on('mouseout', () => {
-		  d3.select('#tooltip').style('opacity', 0);
-		});
-  
-	  addLegend(svg, colorScale);
-	}
-  
-	function createSlider() {
+function createSlider() {
   const slider = d3.select('#slider');
   slider.append('h3').text('Select Timeline (Year)').style('font-size', '20px').style('margin-bottom', '10px');
 
