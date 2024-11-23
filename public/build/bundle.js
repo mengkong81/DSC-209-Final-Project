@@ -21026,9 +21026,22 @@ var app = (function () {
     	let div2;
     	let t4;
     	let div3;
-    	let p;
+    	let p0;
     	let strong;
     	let t6;
+    	let t7;
+    	let div6;
+    	let h2;
+    	let t9;
+    	let div4;
+    	let h30;
+    	let t11;
+    	let p1;
+    	let t13;
+    	let div5;
+    	let h31;
+    	let t15;
+    	let p2;
 
     	const block = {
     		c: function create() {
@@ -21043,27 +21056,45 @@ var app = (function () {
     			div2 = element("div");
     			t4 = space();
     			div3 = element("div");
-    			p = element("p");
+    			p0 = element("p");
     			strong = element("strong");
     			strong.textContent = "Insightful Visualization:";
     			t6 = text$1(" Explore the evolution of U.S. housing market trends with this interactive visualization. Seamlessly hover over each state to reveal its median home price for the selected year. Navigate through two decades of data using the timeline slider and uncover regional trends. The dynamic color gradient highlights price variations, with deeper hues signifying higher housing values, offering a clear, data-driven perspective on the market.");
+    			t7 = space();
+    			div6 = element("div");
+    			h2 = element("h2");
+    			h2.textContent = "Project Insights";
+    			t9 = space();
+    			div4 = element("div");
+    			h30 = element("h3");
+    			h30.textContent = "What have you done so far?";
+    			t11 = space();
+    			p1 = element("p");
+    			p1.textContent = "I have set up the web page structure, ensuring a responsive and user-friendly layout, and added interactive features with Svelte and D3.js. The dataset is cleaned and prepared for visualization, and a deployment strategy using GitHub Pages is finalized. I’ve also tested components for smooth interactivity and created documentation to maintain clarity as the project progresses.";
+    			t13 = space();
+    			div5 = element("div");
+    			h31 = element("h3");
+    			h31.textContent = "What will be the most challenging of your project to design and why?";
+    			t15 = space();
+    			p2 = element("p");
+    			p2.textContent = "The most challenging aspects will be implementing advanced interactions like panning and zooming, ensuring intuitive functionality while maintaining performance with large datasets. Balancing interactivity with usability and adhering to accessibility standards adds complexity. Debugging across browsers and devices will also require significant effort to ensure consistency and reliability.";
     			set_style(h1, "font-size", "28px");
     			set_style(h1, "font-weight", "bold");
-    			add_location(h1, file, 191, 1, 6025);
+    			add_location(h1, file, 169, 2, 5153);
     			set_style(div0, "text-align", "center");
     			set_style(div0, "margin-bottom", "20px");
-    			add_location(div0, file, 190, 0, 5969);
+    			add_location(div0, file, 168, 0, 5096);
     			attr_dev(div1, "id", "slider");
     			set_style(div1, "margin", "30px");
-    			add_location(div1, file, 197, 2, 6182);
+    			add_location(div1, file, 174, 0, 5308);
     			attr_dev(svg, "id", "map");
-    			attr_dev(svg, "class", "svelte-ed4w7q");
-    			add_location(svg, file, 198, 2, 6230);
+    			attr_dev(svg, "class", "svelte-19d0aq0");
+    			add_location(svg, file, 175, 0, 5354);
     			attr_dev(div2, "id", "tooltip");
-    			attr_dev(div2, "class", "svelte-ed4w7q");
-    			add_location(div2, file, 199, 2, 6253);
-    			add_location(strong, file, 214, 0, 6541);
-    			add_location(p, file, 213, 0, 6537);
+    			attr_dev(div2, "class", "svelte-19d0aq0");
+    			add_location(div2, file, 176, 0, 5375);
+    			add_location(strong, file, 190, 4, 5633);
+    			add_location(p0, file, 189, 2, 5625);
     			set_style(div3, "margin-top", "20px");
     			set_style(div3, "padding", "10px");
     			set_style(div3, "line-height", "1.5");
@@ -21074,7 +21105,34 @@ var app = (function () {
     			set_style(div3, "font-size", "20px");
     			set_style(div3, "color", "#333");
     			set_style(div3, "text-indent", "40px");
-    			add_location(div3, file, 202, 0, 6335);
+    			add_location(div3, file, 178, 0, 5401);
+    			set_style(h2, "text-align", "center");
+    			add_location(h2, file, 195, 2, 6227);
+    			set_style(h30, "margin", "0");
+    			set_style(h30, "font-size", "18px");
+    			add_location(h30, file, 198, 4, 6382);
+    			set_style(p1, "margin-top", "10px");
+    			add_location(p1, file, 199, 4, 6458);
+    			set_style(div4, "border", "1px solid #ddd");
+    			set_style(div4, "border-radius", "5px");
+    			set_style(div4, "padding", "15px");
+    			set_style(div4, "margin-bottom", "15px");
+    			add_location(div4, file, 197, 2, 6284);
+    			set_style(h31, "margin", "0");
+    			set_style(h31, "font-size", "18px");
+    			add_location(h31, file, 205, 4, 6993);
+    			set_style(p2, "margin-top", "10px");
+    			add_location(p2, file, 206, 4, 7111);
+    			set_style(div5, "border", "1px solid #ddd");
+    			set_style(div5, "border-radius", "5px");
+    			set_style(div5, "padding", "15px");
+    			set_style(div5, "margin-bottom", "15px");
+    			add_location(div5, file, 204, 2, 6895);
+    			set_style(div6, "margin", "20px auto");
+    			set_style(div6, "max-width", "800px");
+    			set_style(div6, "font-family", "Arial, sans-serif");
+    			set_style(div6, "line-height", "1.6");
+    			add_location(div6, file, 194, 0, 6124);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21090,9 +21148,22 @@ var app = (function () {
     			insert_dev(target, div2, anchor);
     			insert_dev(target, t4, anchor);
     			insert_dev(target, div3, anchor);
-    			append_dev(div3, p);
-    			append_dev(p, strong);
-    			append_dev(p, t6);
+    			append_dev(div3, p0);
+    			append_dev(p0, strong);
+    			append_dev(p0, t6);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, h2);
+    			append_dev(div6, t9);
+    			append_dev(div6, div4);
+    			append_dev(div4, h30);
+    			append_dev(div4, t11);
+    			append_dev(div4, p1);
+    			append_dev(div6, t13);
+    			append_dev(div6, div5);
+    			append_dev(div5, h31);
+    			append_dev(div5, t15);
+    			append_dev(div5, p2);
     		},
     		p: noop$4,
     		i: noop$4,
@@ -21107,6 +21178,8 @@ var app = (function () {
     			if (detaching) detach_dev(div2);
     			if (detaching) detach_dev(t4);
     			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(div6);
     		}
     	};
 
@@ -21121,14 +21194,19 @@ var app = (function () {
     	return block;
     }
 
+    function toggleAnswer(id) {
+    	const answer = document.getElementById(id);
+    	answer.classList.toggle('show');
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	let width = 1700; // Expanded width
-    	let height = 1000; // Expanded height
+    	let width = 1700;
+    	let height = 1000;
     	let data, geoJson, selectedDate;
     	let dateRange = [];
-    	let colorScale = threshold().domain([0, 100000, 300000, 500000, 750000, 1000000]).range(['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#084594']);
+    	const colorScale = threshold().domain([0, 100000, 300000, 500000, 750000, 1000000]).range(['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#084594']);
 
     	onMount(async () => {
     		data = await csv('/median_prices.csv');
@@ -21141,7 +21219,7 @@ var app = (function () {
 
     	function drawMap() {
     		const svg = select('#map').attr('width', width).attr('height', height);
-    		const projection = albersUsa().scale(1800).translate([width / 2, height / 2]); // Adjusted for expanded map
+    		const projection = albersUsa().scale(1800).translate([width / 2, height / 2]);
     		const path = index$2().projection(projection);
 
     		geoJson.features.forEach(feature => {
@@ -21152,37 +21230,16 @@ var app = (function () {
     		svg.selectAll('path').data(geoJson.features).join('path').attr('d', path).attr('fill', d => d.properties.median_price !== null
     		? colorScale(d.properties.median_price)
     		: '#ccc').attr('stroke', '#333').attr('stroke-width', 0.5).on('mouseover', function (event, d) {
-    			// Highlight the state
-    			select(this).transition().duration(200).attr('fill', '#ffcc00').attr('stroke-width', 2); // Change to a highlight color
-    			// Thicker border
-
-    			// Show tooltip
     			if (d.properties.median_price !== null) {
     				const formattedPrice = d.properties.median_price.toLocaleString();
-    				select('#tooltip').style('opacity', 1).html(`${d.properties.NAME}: $${formattedPrice}`).style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
-    			}
-    		}).on('mouseover', function (event, d) {
-    			if (d.properties.median_price !== null) {
-    				// Brighten the current color slightly
-    				const currentColor = select(this).attr('fill');
-
-    				const brighterColor = color(currentColor).brighter(0.5);
-
-    				select(this).transition().duration(200).attr('fill', brighterColor).attr('stroke-width', 4); // Brighten the current color
-    				// Thicker border
-
-    				// Show tooltip
-    				const formattedPrice = d.properties.median_price.toLocaleString();
-
+    				select(this).transition().duration(200).attr('fill', color(colorScale(d.properties.median_price)).brighter(0.5)).attr('stroke-width', 2);
     				select('#tooltip').style('opacity', 1).html(`${d.properties.NAME}: $${formattedPrice}`).style('left', `${event.pageX + 10}px`).style('top', `${event.pageY + 10}px`);
     			}
     		}).on('mouseout', function (event, d) {
-    			// Reset to the original color
     			select(this).transition().duration(200).attr('fill', d => d.properties.median_price !== null
     			? colorScale(d.properties.median_price)
     			: '#ccc').attr('stroke-width', 0.5);
 
-    			// Hide tooltip
     			select('#tooltip').style('opacity', 0);
     		});
 
@@ -21192,30 +21249,27 @@ var app = (function () {
     	function createSlider() {
     		const slider = select('#slider');
     		slider.append('h3').text('Select Timeline (Year)').style('font-size', '20px').style('margin-bottom', '10px');
-    		const yearRange = dateRange.map(d => d.split('/')[2]); // Extract years from the dates
-    		const sliderScale = linear().domain([0, yearRange.length - 1]).range([0, 800]); // Adjusted slider width
+    		const yearRange = dateRange.map(d => d.split('/')[2]);
+    		const sliderScale = linear().domain([0, yearRange.length - 1]).range([0, 800]);
     		const axis = axisBottom(sliderScale).ticks(10).tickFormat(i => yearRange[i]);
     		const svg = slider.append('svg').attr('width', 850).attr('height', 80);
-
-    		svg.append('g').attr('transform', 'translate(25,50)').call(axis).selectAll('text').style('font-size', '18px').style('font-weight', 'bold').style('fill', '#333'); // Increase font size here
-    		// Optionally, make it bold for emphasis
-    		// Optionally, set a darker text color
+    		svg.append('g').attr('transform', 'translate(25,50)').call(axis).selectAll('text').style('font-size', '18px').style('font-weight', 'bold').style('fill', '#333');
 
     		const handle = svg.append('circle').attr('cx', 25).attr('cy', 50).attr('r', 10).attr('fill', 'orange').call(drag().on('drag', event => {
-    			let x = Math.min(800, Math.max(0, event.x - 25)); // Larger handle for better visibility
+    			let x = Math.min(800, Math.max(0, event.x - 25));
     			handle.attr('cx', x + 25);
     			const index = Math.round(sliderScale.invert(x));
-    			selectedDate = dateRange[index]; // Use full date for data lookup
+    			selectedDate = dateRange[index];
     			drawMap();
     		}));
     	}
 
     	function addLegend(svg, colorScale) {
-    		const legendWidth = 800; // Adjust for wider legend
+    		const legendWidth = 800;
     		const legendHeight = 20;
     		const legend = svg.append('g').attr('id', 'legend').attr('transform', `translate(${(width - legendWidth) / 2}, 50)`);
-    		const axisScale = linear().domain([0, 1000000]).range([0, legendWidth]); // Updated domain to include $1,000,000
-    		const legendAxis = axisBottom(axisScale).tickValues([0, 100000, 300000, 500000, 750000, 1000000]).tickFormat(d => `$${d.toLocaleString()}`); // Add $1,000,000 to tick values
+    		const axisScale = linear().domain([0, 1000000]).range([0, legendWidth]);
+    		const legendAxis = axisBottom(axisScale).tickValues([0, 100000, 300000, 500000, 750000, 1000000]).tickFormat(d => `$${d.toLocaleString()}`);
     		const gradient = svg.append('defs').append('linearGradient').attr('id', 'gradient');
 
     		gradient.selectAll('stop').data([
@@ -21224,8 +21278,8 @@ var app = (function () {
     			{ offset: '30%', color: '#c6dbef' },
     			{ offset: '45%', color: '#9ecae1' },
     			{ offset: '66.6%', color: '#6baed6' },
-    			{ offset: '100%', color: '#041e42' }
-    		]).enter().append('stop').attr('offset', d => d.offset).attr('stop-color', d => d.color); // Much darker blue for $1,000,000
+    			{ offset: '100%', color: '#084594' }
+    		]).enter().append('stop').attr('offset', d => d.offset).attr('stop-color', d => d.color);
 
     		legend.append('rect').attr('width', legendWidth).attr('height', legendHeight).style('fill', 'url(#gradient)');
     		legend.append('g').attr('transform', `translate(0, ${legendHeight})`).call(legendAxis).selectAll('text').style('font-size', '18px').style('font-weight', 'bold');
@@ -21249,7 +21303,8 @@ var app = (function () {
     		colorScale,
     		drawMap,
     		createSlider,
-    		addLegend
+    		addLegend,
+    		toggleAnswer
     	});
 
     	$$self.$inject_state = $$props => {
@@ -21259,7 +21314,6 @@ var app = (function () {
     		if ('geoJson' in $$props) geoJson = $$props.geoJson;
     		if ('selectedDate' in $$props) selectedDate = $$props.selectedDate;
     		if ('dateRange' in $$props) dateRange = $$props.dateRange;
-    		if ('colorScale' in $$props) colorScale = $$props.colorScale;
     	};
 
     	if ($$props && "$$inject" in $$props) {
